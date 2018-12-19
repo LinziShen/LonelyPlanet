@@ -1,0 +1,224 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-size: 1.1em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .divbg {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #panorama {
+            height: 100%;
+            width: 35%;
+            overflow: hidden;
+            position: absolute;
+            left: 0px;
+        }
+
+        #allmap {
+            height: 100%;
+            width: 65%;
+            overflow: hidden;
+            position: absolute;
+            right: 0px;
+        }
+
+        #r-result {
+            width: 200px;
+            height: 180px;
+            text-align: center;
+            line-height: 0px;
+            font-family: "Times New Roman";
+            font-size: 1.1em;
+            background-color: rgba(255,255,255,0.3);
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100px;
+            background-color: rgba(255,255,255,0.3);
+            color: #000000;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            border-radius: 9px;
+        }
+
+        .sidebar1 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 105px;
+            border-radius: 9px;
+        }
+
+        .sidebar2 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 160px;
+            border-radius: 9px;
+        }
+
+        .sidebar3 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 215px;
+            border-radius: 9px;
+        }
+
+        .zisize {
+            font-size: 2em;
+            line-height: 1.5;
+            text-align: center;
+            font-family: "Times New Roman";
+        }
+
+        .sidebar4 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 270px;
+            border-radius: 9px;
+        }
+
+        .sidebar5 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 325px;
+            border-radius: 9px;
+        }
+
+        .sidebar6 {
+            width: 200px;
+            height: 50px;
+            background-color: rgba(255, 255, 255,0.3);
+            text-align: center;
+            position: absolute;
+            right: 0px;
+            top: 380px;
+            border-radius: 9px;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=26v5n5cARVklGEwGFX28SkeOUlLGGEFL"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <title>LONELY PLANET</title>
+</head>
+<body>
+    <div class="divbg">
+        <div id="panorama"></div>
+        <div id="allmap"></div>
+        <div id="r-result">
+            <p>Traffic flow</p>
+            <input type="button" onclick="traffic(this);" value="Open" id="open" />
+            <p>place:</p>
+            <input id="place" type="text" style="width:100px; margin-right:10px;" />
+            <input type="button" value="Query" onclick="theLocation()" />
+            <!--<p>heatmap:</p>
+            <input type="button" onclick="openHeatmap();" value="Open" /><input type="button" onclick="closeHeatmap();" value="Close" />-->
+        </div>
+        <div class="sidebar">
+            <p class="zisize">Someplace</p>
+        </div>
+        <a href="place/place1.html" style="color:black;text-decoration:none"><div class="sidebar1"><p>红叶拾楠</p></div></a>
+        <a href="place/place2.html" style="color:black;text-decoration:none"><div class="sidebar2"><p>The Orchid</p></div></a>
+        <a href="place/place3.html" style="color:black;text-decoration:none"><div class="sidebar3"><p>糯言酒馆</p></div></a>
+        <a href="place/place4.html" style="color:black;text-decoration:none"><div class="sidebar4"><p>一拙</p></div></a>
+        <a href="place/place5.html" style="color:black;text-decoration:none"><div class="sidebar5"><p>花酉酿</p></div></a>
+        <a href="place/place6.html" style="color:black;text-decoration:none"><div class="sidebar6"><p>钱粮美树馆</p></div></a>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+        // 百度地图API功能
+	var map = new BMap.Map("allmap");
+        var point = new BMap.Point(116.421597, 39.921984);
+        map.centerAndZoom(point, 18);   
+
+	//设置地图样式
+	var mapStyle = {
+	    style: "dark",
+	    maxZoom: 18,
+	    enableScrollWheelZoom: true
+	}
+	map.setMapStyle(mapStyle);
+
+
+    // 初始化地图， 设置中心点坐标和地图级别
+
+	function traffic(obj) {
+	    var traffic = new BMap.TrafficLayer();
+	    if (obj.id = "open") {
+	        map.addTileLayer(traffic);
+	    }
+    }
+
+
+	function theLocation(){var local = new BMap.LocalSearch(map, {
+	    renderOptions: { map: map }
+	}); 
+	    var place = document.getElementById("place").value;
+	    local.search(place);
+	    if (local != "") { map.centerAndZoom(local, 15);
+	    }
+	 
+    }
+
+	   		var panorama = new BMap.Panorama('panorama');
+	   		panorama.setPosition(new BMap.Point(116.421597, 39.921984)); //根据经纬度坐标展示全景图
+	panorama.setPov({heading: -40, pitch: 6});
+
+	panorama.addEventListener('position_changed', function(e){ //全景图位置改变后，普通地图中心点也随之改变
+	    var pos = panorama.getPosition();
+	    map.setCenter(new BMap.Point(pos.lng, pos.lat));
+	    marker.setPosition(pos);
+	})
+
+	//map.centerAndZoom(new BMap.Point(116.4035,39.915),15);
+
+    var marker=new BMap.Marker(point);
+	marker.enableDragging();
+	map.addOverlay(marker);
+	marker.addEventListener('dragend',function(e){
+		panorama.setPosition(e.point); //拖动marker后，全景图位置也随着改变
+		panorama.setPov({heading: -40, pitch: 6});}
+	);
+
+
+
+
+
+
+
+</script>

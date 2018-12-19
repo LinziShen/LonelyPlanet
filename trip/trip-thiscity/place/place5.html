@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+            /*background-color: black;*/
+        }
+
+        body {
+            background-image: url(img/p5.jpg);
+            background-repeat: round;
+        }
+
+        .div1 {
+            width: 100%;
+            position: relative;
+        }
+
+        .div2 {
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .div3 {
+            width: 70%;
+            height: 200px;
+            background-color: rgba(255,255,255,0.3);
+            position: absolute;
+            top: 140px;
+            right: 200px;
+            text-align: center;
+            color: #1a0d00;
+            font-size: 1.2em;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 9px;
+        }
+
+        .div4 {
+            width: 70%;
+            height: 100px;
+            position: absolute;
+            top: 950px;
+            right: 200px;
+            color: black;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 35px;
+        }
+
+        .div5 {
+            width: 70%;
+            height: 50px;
+            position: absolute;
+            top: 360px;
+            right: 200px;
+            background-color: rgba(255,255,255,0.3);
+            color: #1a0d00;
+            text-align: center;
+            font-size: 1.1em;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 9px;
+        }
+
+        #allmap {
+            height: 500px;
+            width: 70%;
+            position: absolute;
+            right: 200px;
+            top: 430px;
+            border-radius: 9px;
+        }
+        /*#onenet {
+            height: 400px;
+            width: 70%;
+            position: absolute;
+            right: 200px;
+            top: 950px;
+            text-align: center;
+            font-size: 1.4em;
+            font-family: 'Times New Roman', Times, serif;
+        }*/
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=26v5n5cARVklGEwGFX28SkeOUlLGGEFL"></script>
+    <script type="application/json" api-key="1wKWlcaZ1D3ZWmkAiS8TnZ7W=d0=" src="https://api.heclouds.com/devices/503094708/datapoints?datastream_id=Light,Temperature,Humidity&limit=15">
+    </script>
+    <title>LONELY PLANET</title>
+</head>
+<body>
+    <div class="div1">
+        <div id="allmap"></div>
+        <div class="div2"><h1 style="color:#ffffff">花酉酿</h1><hr></div>
+        <div class="div3">
+            <p>花酉酿</p>
+            <p>这是间隐蔽到邻居都未必能发现的咖啡馆，整个门面低调到只有一个牌子，仿佛有旧时访友的感觉。这家店每个角落都布满了惊喜，走进这里仿佛充斥在花的海洋；待在这里，烦心事儿将被一股抛到脑后。因为店铺位置的足够神秘感，再加上随处可见的植物芬芳与潮湿水汽，这里将是闹市喧嚣中再好不过的安静栖息之所</p>
+        </div>
+        <!--<div class="div4"><img src="img/p1.jpg" /></div>-->
+        <div class="div5">
+            <p>
+                Position:公交铸钟厂站，西城区鼓楼西大街铸钟胡同60号
+            </p>
+        </div>
+        <div class="div4"><hr /><p>lonely planet</p></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+        // 百度地图API功能
+	var map = new BMap.Map("allmap");
+        var point = new BMap.Point(116.421597, 39.921984);
+        map.centerAndZoom(point, 11);
+
+	var mapStyle = {
+	    style: "dark",
+	    maxZoom: 18,
+	    enableScrollWheelZoom: true
+	}
+	map.setMapStyle(mapStyle);
+
+	var end = "铸钟胡同";
+	var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function (r) {
+	    if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+	        var mk = new BMap.Marker(r.point);
+	        map.addOverlay(mk);
+	        map.panTo(r.point);
+	        var driving = new BMap.DrivingRoute(map, { renderOptions: { map: map, autoViewport: true } });
+	        driving.search(r.point, end);
+	    }
+	    else {
+	        alert('failed' + this.getStatus());
+	    }
+	}, { enableHighAccuracy: true })
+
+
+
+</script>
