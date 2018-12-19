@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>LONELY PLANET</title>
+    <style type="text/css">
+        body {
+            background-color: black;
+            font-family: 'Times New Roman', Times, serif;
+        }
+ .div1{
+     position:absolute;
+     height:80%;
+     width:80%;
+     left:10%;
+     top:15%;
+     text-align:center;
+ }
+     </style>
+</head >
+        <body >
+            <h1 style="color:#ffffff">Keep a diary here</h1><hr />
+            <div class="div1">
+                <form action="diary.php" method="post">
+                   <font color="#ffffff">Date:</font><br />
+                   <input type="text" name="date" /><br />
+                   <font color="#c0c0c0">(Example:2000-1-1)</font><br /><br />
+                   <textarea rows="30" cols="50" name="diary"></textarea>
+                    <br /><br />
+                   <input type="submit" value="submit" style="width:150px; height:30px;border-radius: 5px; font-family:arial;background:black;color:white;font-size:15px;" />
+                   <input type="button" onclick="javascript:window.location.href='showdiary.php'" value="diaries" style="width:150px; height:30px;border-radius: 5px; font-family:arial;background:black;color:white;font-size:15px;"/>
+                 </form>
+</div>
+ </body >
+ </html >
