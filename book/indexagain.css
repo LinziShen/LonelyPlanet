@@ -1,0 +1,51 @@
+body
+	{
+	background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+	
+	}
+
+h1  
+	{
+		color:black;
+		font-size:40pt;
+		font-weight:lighter;
+		text-align:center;
+		position:absolute;
+		left:43.5%;
+		top:25%;
+
+	}
+
+img
+	{
+		position:absolute;
+		left: 38.5%;
+		top:33%;
+	}
+
+a
+	{
+		color:black;
+		font-size:35pt;
+		font-weight:lighter;
+		text-align:center;
+
+	}
+a:link {color:black;text-decoration:none;}      /* 未访问链接*/
+a:visited {color:black;text-decoration:none;}  /* 已访问链接 */
+a:hover {color:#C5C4C4;text-decoration:underline;}  /* 鼠标移动到链接上 */
+a:active {color:#C5C4C4;text-decoration:underline;}  /* 鼠标点击时 */
+
+a.one
+	{
+		position:absolute;
+		left:40%;
+		top:55%;
+	}
+
+a.two
+	{
+		position: absolute;
+		right: 40%;
+		top:55%;
+	}

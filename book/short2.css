@@ -1,0 +1,65 @@
+body
+	{
+	background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+	
+	}
+.title
+	{
+		margin-top: 40pt;
+
+	}
+h1
+	{
+		font-size: 40pt;
+		font-weight:lighter;
+	}
+div.maintext
+	{
+		margin-left: 80pt;
+		margin-right: 80pt;
+		margin-bottom: 100pt;
+	}
+
+h2
+	{
+		font-size: 30pt;
+		text-align: center;
+
+	}
+
+h3
+	{
+		font-size: 20pt;
+		text-align: center;
+	}
+
+p.maintext
+	{
+		text-align: left;
+		text-indent: 32.0pt;
+		mso-char-indent-count:2.0;
+	}
+span
+	{
+		font-size:16.0pt;
+		mso-bidi-font-size:18.0pt;
+		font-family:"微软雅黑","sans-serif"
+	}
+
+.link
+	{
+		margin-bottom: 50pt; 
+	}
+a
+	{
+		font-size: 25pt;
+		font-weight:lighter;
+		text-align:center;
+
+		
+	}
+
+a:link {color:black;text-decoration:none;}      /* 未访问链接*/
+a:visited {color:black;text-decoration:none;}  /* 已访问链接 */
+a:hover {color:#C5C4C4;text-decoration:underline;}  /* 鼠标移动到链接上 */
+a:active {color:#C5C4C4;text-decoration:underline;}  /* 鼠标点击时 */
